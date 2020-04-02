@@ -18,7 +18,7 @@ bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    send_text = f'<b>Бот статистики COVID-19. Будь на чеку {message.from_user.first_name}!</b>\nВведите страну: '
+    send_text = f'<b>Бот статистики COVID-19. Будь на чеку {message.from_user.first_name}!</b>\nВведите страну(россия, сша, украина): '
     bot.send_message(message.chat.id, send_text, parse_mode='html')
 
 
@@ -39,8 +39,8 @@ def mess(message):
     if out_message == '':
         date = location[0]['last_updated'].split('T')
         time = date[1].split('.')
-        out_message = f'Население страны - {location[0]["country_population"]:,} *' \
-                      f'Потверждены - {location[0]["latest"]["confirmed"]:,} *' \
+        out_message = f'Население страны - {location[0]["country_population"]:,} * \n' \
+                      f'Потверждены всего - {location[0]["latest"]["confirmed"]:,} * \n' \
                       f'Погибли - {location[0]["latest"]["deaths"]:,} *'
 
     bot.send_message(message.chat.id, out_message, parse_mode='html')
