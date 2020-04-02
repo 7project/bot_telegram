@@ -1,0 +1,13 @@
+certifi==2019.11.28
+chardet==3.0.4
+COVID19Py==0.3.0
+get==2019.4.13
+idna==2.9
+post==2019.4.13
+public==2019.4.13
+pyTelegramBotAPI==3.6.7
+query-string==2019.4.13
+request==2019.4.13
+requests==2.23.0
+six==1.14.0
+urllib3==1.25.8
