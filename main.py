@@ -18,7 +18,7 @@ bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    send_text = f'<b>Бот статистики COVID-19. Будь на чеку {message.from_user.first_name}!</b>\nВведите страну(россия, сша, украина): '
+    send_text = f'<b>Бот статистики COVID-19. Будь начеку, {message.from_user.first_name}!</b>\nВведите страну(Россия, США, Украина): '
     bot.send_message(message.chat.id, send_text, parse_mode='html')
 
 
