@@ -50,15 +50,17 @@ def mess(message):
     if out_message == '':
         date = location[0]['last_updated'].split('T')
         time = date[1].split('.')
+        percentage_patients_country = (int(location[0]["country_population"]) * 100) / int(location[0]["country_population"])
         out_message = f'Страна - <b>{get_message_bot}</b>\n' \
                       f'Время запуска проверки - <b>{datetime.now()}</b>\n' \
-                      f'Статистика за - <b>{date} - {time}</b>\n' \
+                      f'Статистика за - <b>{date[0]} - {time[0]}</b>\n' \
                       f'Население страны - {location[0]["country_population"]:,} *\n' \
                       f'Потверждены всего - {location[0]["latest"]["confirmed"]:,} *\n' \
-                      f'Погибли - {location[0]["latest"]["deaths"]:,} *'
+                      f'Погибли - {location[0]["latest"]["deaths"]:,} *' \
+                      f'Процент заболевших населения страны - {percentage_patients_country:,} *'
 
         print(f'Name: {message.from_user.first_name}, Date: {datetime.now()}')
-        log.info(f'Called bot.. name: {message.from_user.first_name}')
+        log.info(f'Called bot.. name: {message.from_user.first_name}, command: {get_message_bot}')
 
 
     bot.send_message(message.chat.id, out_message, parse_mode='html')
