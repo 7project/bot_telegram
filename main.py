@@ -48,7 +48,7 @@ def mess(message):
 # счетчик
 # count_exp = 0
 
-bot.polling(none_stop=True)
+bot.polling(none_stop=False)
 
 # while True:
 #     try:
