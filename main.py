@@ -39,7 +39,7 @@ def start(message):
     send_text = f'<b>Карта статистики COVID-19 в мире. Будь начеку, {message.from_user.first_name} - мой руки, сиди дома!</b>\nВремя проверки - <b>{datetime.now()}</b>\n' \
                 f'<a href="https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6">Word maps! Press.. me </a>'
     bot.send_message(message.chat.id, send_text, parse_mode='html')
-        log.info(f'Called bot.. name: {message.from_user.first_name}, command: /map')
+    log.info(f'Called bot.. name: {message.from_user.first_name}, command: /map')
 
 @bot.message_handler(content_types=['text'])
 def mess(message):
