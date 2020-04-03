@@ -28,7 +28,8 @@ bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    send_text = f'<b>Бот статистики COVID-19. Будь начеку, {message.from_user.first_name}!</b>\nВремя проверки - <b>{datetime.now()}</b>\nВведите страну(Россия, США, Украина): '
+    send_text = f'<b>Бот статистики COVID-19. Будь начеку, {message.from_user.first_name}!</b>\nВремя проверки - <b>{datetime.now()}</b>\n' \
+                f'Введите страну из списка (США, Испания, Италия, Германия, Китай, Франция, Иран, Англия, Турция, Росиия, Япония, Украина):'
     bot.send_message(message.chat.id, send_text, parse_mode='html')
 
 
@@ -42,6 +43,24 @@ def mess(message):
         location = covid_19.getLocationByCountryCode('US')
     elif get_message_bot == 'украина':
         location = covid_19.getLocationByCountryCode('UA')
+    elif get_message_bot == 'италия':
+        location = covid_19.getLocationByCountryCode('IT')
+    elif get_message_bot == 'испания':
+        location = covid_19.getLocationByCountryCode('ES')
+    elif get_message_bot == 'китай':
+        location = covid_19.getLocationByCountryCode('CN')
+    elif get_message_bot == 'германия':
+        location = covid_19.getLocationByCountryCode('DE')
+    elif get_message_bot == 'франция':
+        location = covid_19.getLocationByCountryCode('FR')
+    elif get_message_bot == 'иран':
+        location = covid_19.getLocationByCountryCode('IR')
+    elif get_message_bot == 'япония':
+        location = covid_19.getLocationByCountryCode('JP')
+    elif get_message_bot == 'англия':
+        location = covid_19.getLocationByCountryCode('GB')
+    elif get_message_bot == 'турция':
+        location = covid_19.getLocationByCountryCode('TR')
     else:
         location = covid_19.getLatest()
         out_message = f'<u>Данные по всему миру:</u>\n<b> Заболевшие: </b>{location["confirmed"]}'
