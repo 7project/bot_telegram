@@ -78,7 +78,7 @@ def mess(message):
                       f'Население страны - {location[0]["country_population"]:,}\n' \
                       f'Потверждены всего - {location[0]["latest"]["confirmed"]} *\n' \
                       f'Погибли - {location[0]["latest"]["deaths"]} *\n' \
-                      f'Процент заболевших в стране - {percentage_patients_country:.6f} % *'
+                      f'Процент заболевших в стране - {percentage_patients_country:.7f} % *'
 
         print(f'Name: {message.from_user.first_name}, Date: {datetime.now()}')
         log.info(f'Called bot.. name: {message.from_user.first_name}, command: {get_message_bot}')
