@@ -31,14 +31,16 @@ def start(message):
     send_text = f'<b>Бот статистики COVID-19. Будь начеку, {message.from_user.first_name}!</b>\nВремя проверки - <b>{datetime.now()}</b>\n' \
                 f'Введите страну из списка (США, Испания, Италия, Германия, Китай, Франция, Иран, Англия, Турция, Росиия, Япония, Украина):'
     bot.send_message(message.chat.id, send_text, parse_mode='html')
+    bot.send_message('@covid19word', out_message, parse_mode='html')
     log.info(f'Called bot.. name: {message.from_user.first_name}, command: /start')
 
 
 @bot.message_handler(commands=['map'])
-def start(message):
+def map(message):
     send_text = f'<b>Карта статистики COVID-19 в мире. Будь начеку, {message.from_user.first_name} - мой руки, сиди дома!</b>\nВремя проверки - <b>{datetime.now()}</b>\n' \
                 f'<a href="https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6">Word maps! Press.. me </a>'
     bot.send_message(message.chat.id, send_text, parse_mode='html')
+    bot.send_message('@covid19word', out_message, parse_mode='html')
     log.info(f'Called bot.. name: {message.from_user.first_name}, command: /map')
 
 @bot.message_handler(content_types=['text'])
@@ -59,6 +61,7 @@ def mess(message):
         location = covid_19.getLocationByCountryCode('CN')
         out_message = f'<u>Данные не корректны!</u>\n<b> Заболевших на 03.04.2020 в Китае: 82 502</b>'
         bot.send_message(message.chat.id, out_message, parse_mode='html')
+        bot.send_message('@covid19word', out_message, parse_mode='html')
         out_message = ''
     elif get_message_bot == 'германия':
         location = covid_19.getLocationByCountryCode('DE')
@@ -66,6 +69,7 @@ def mess(message):
         location = covid_19.getLocationByCountryCode('FR')
         out_message = f'<u>Данные не корректны!</u>\n<b> Заболевших на 03.04.2020 в Франции: 59 929</b>'
         bot.send_message(message.chat.id, out_message, parse_mode='html')
+        bot.send_message('@covid19word', out_message, parse_mode='html')
         out_message = ''
     elif get_message_bot == 'иран':
         location = covid_19.getLocationByCountryCode('IR')
@@ -75,6 +79,7 @@ def mess(message):
         location = covid_19.getLocationByCountryCode('GB')
         out_message = f'<u>Данные не корректны!</u>\n<b> Заболевших на 03.04.2020 в Англии: 34 192</b>'
         bot.send_message(message.chat.id, out_message, parse_mode='html')
+        bot.send_message('@covid19word', out_message, parse_mode='html')
         out_message = ''
     elif get_message_bot == 'турция':
         location = covid_19.getLocationByCountryCode('TR')
@@ -82,6 +87,7 @@ def mess(message):
         location = covid_19.getLatest()
         out_message = f'<u>Данные по всему миру:</u>\n<b> Заболевшие: </b>{location["confirmed"]}'
         log.info(f'Called bot.. name: {message.from_user.first_name}')
+
 
     if out_message == '':
         date = location[0]['last_updated'].split('T')
@@ -102,6 +108,7 @@ def mess(message):
 
 
     bot.send_message(message.chat.id, out_message, parse_mode='html')
+    bot.send_message('@covid19word', out_message, parse_mode='html')
 
 # счетчик
 # count_exp = 0
