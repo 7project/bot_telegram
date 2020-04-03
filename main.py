@@ -29,9 +29,9 @@ bot = telebot.TeleBot(TOKEN)
 @bot.message_handler(commands=['start'])
 def start(message):
     send_text = f'<b>Бот статистики COVID-19. Будь начеку, {message.from_user.first_name}!</b>\nВремя проверки - <b>{datetime.now()}</b>\n' \
-                f'Введите страну из списка (США, Испания, Италия, Германия, Китай, Франция, Иран, Англия, Турция, Росиия, Япония, Украина):'
+                f'Введите страну из списка (США, Испания, Италия, Германия, Китай, Франция, Иран, Англия, Турция, Росcия, Япония, Украина):'
     send_chanel = f'<b>Бот статистики COVID-19.</b>\nВремя проверки - <b>{datetime.now()}</b>\n' \
-                  f'Введите страну из списка (США, Испания, Италия, Германия, Китай, Франция, Иран, Англия, Турция, Росиия, Япония, Украина):'
+                  f'Введите страну из списка (США, Испания, Италия, Германия, Китай, Франция, Иран, Англия, Турция, Росcия, Япония, Украина):'
     bot.send_message(message.chat.id, send_text, parse_mode='html')
     bot.send_message('@covid19word', send_chanel, parse_mode='html')
     log.info(f'Called bot.. name: {message.from_user.first_name}, command: /start')
@@ -41,8 +41,8 @@ def start(message):
 def map(message):
     send_text = f'<b>Карта статистики COVID-19 в мире. Будь начеку, {message.from_user.first_name} - мой руки, сиди дома!</b>\nВремя проверки - <b>{datetime.now()}</b>\n' \
                 f'<a href="https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6">Word maps! Press.. me </a>'
-    send_chanel = f'<b>Бот статистики COVID-19.</b>\nВремя проверки - <b>{datetime.now()}</b>\n' \
-                  f'Введите страну из списка (США, Испания, Италия, Германия, Китай, Франция, Иран, Англия, Турция, Росиия, Япония, Украина):'
+    send_chanel = f'<b>Карта статистики COVID-19 в мире.</b>\nВремя проверки - <b>{datetime.now()}</b>\n' \
+                  f'<a href="https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6">Word maps! Press.. me </a>'
     bot.send_message(message.chat.id, send_text, parse_mode='html')
     bot.send_message('@covid19word', send_chanel, parse_mode='html')
     log.info(f'Called bot.. name: {message.from_user.first_name}, command: /map')
