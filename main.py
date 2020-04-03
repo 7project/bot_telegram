@@ -2,6 +2,7 @@ import COVID19Py
 import telebot
 from config import *
 from telebot import apihelper
+from datetime import datetime
 
 
 covid_19 = COVID19Py.COVID19()
@@ -42,6 +43,8 @@ def mess(message):
         out_message = f'Население страны - {location[0]["country_population"]:,} * \n' \
                       f'Потверждены всего - {location[0]["latest"]["confirmed"]:,} * \n' \
                       f'Погибли - {location[0]["latest"]["deaths"]:,} *'
+
+        print(f'Name: {message.from_user.first_name}, Date: {datetime.now()}')
 
     bot.send_message(message.chat.id, out_message, parse_mode='html')
 
