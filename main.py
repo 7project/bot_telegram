@@ -50,8 +50,8 @@ def mess(message):
     if out_message == '':
         date = location[0]['last_updated'].split('T')
         time = date[1].split('.')
-        country_population = ''.join(location[0]["country_population"].split(','))
-        people_confirmed = ''.join(location[0]["latest"]["confirmed"].split(','))
+        country_population = location[0]["country_population"]
+        people_confirmed = location[0]["latest"]["confirmed"]
         percentage_patients_country = (int(people_confirmed) * 100) / int(country_population)
         out_message = f'Страна - <b>{get_message_bot}</b>\n' \
                       f'Время запуска проверки - <b>{datetime.now()}</b>\n' \
