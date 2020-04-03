@@ -1,8 +1,17 @@
 import COVID19Py
 import telebot
+import logging
 from config import *
 from telebot import apihelper
 from datetime import datetime
+
+
+log = logging.getLogger('telebot')
+log.setLevel(logging.INFO)
+fh = logging.FileHandler("telebot.log", 'w', 'utf-8')
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+fh.setFormatter(formatter)
+log.addHandler(fh)
 
 
 covid_19 = COVID19Py.COVID19()
@@ -19,7 +28,7 @@ bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    send_text = f'<b>Бот статистики COVID-19. Будь начеку, {message.from_user.first_name}!</b>\nВведите страну(Россия, США, Украина): '
+    send_text = f'<b>Бот статистики COVID-19. Будь начеку, {message.from_user.first_name}!</b>\nВремя проверки - <b>{datetime.now()}</b>\nВведите страну(Россия, США, Украина): '
     bot.send_message(message.chat.id, send_text, parse_mode='html')
 
 
@@ -40,11 +49,15 @@ def mess(message):
     if out_message == '':
         date = location[0]['last_updated'].split('T')
         time = date[1].split('.')
-        out_message = f'Население страны - {location[0]["country_population"]:,} * \n' \
-                      f'Потверждены всего - {location[0]["latest"]["confirmed"]:,} * \n' \
+        out_message = f'Страна - <b>{message.from_user.first_name}</b>\n' \
+                      f'Время проверки - <b>{datetime.now()}</b>\n' \
+                      f'Население страны - {location[0]["country_population"]:,} *\n' \
+                      f'Потверждены всего - {location[0]["latest"]["confirmed"]:,} *\n' \
                       f'Погибли - {location[0]["latest"]["deaths"]:,} *'
 
         print(f'Name: {message.from_user.first_name}, Date: {datetime.now()}')
+        log.info('Called bot..')
+
 
     bot.send_message(message.chat.id, out_message, parse_mode='html')
 
