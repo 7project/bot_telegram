@@ -45,18 +45,20 @@ def mess(message):
     else:
         location = covid_19.getLatest()
         out_message = f'<u>Данные по всему миру:</u>\n<b> Заболевшие: </b>{location["confirmed"]}'
+        log.info(f'Called bot.. name: {message.from_user.first_name}')
 
     if out_message == '':
         date = location[0]['last_updated'].split('T')
         time = date[1].split('.')
         out_message = f'Страна - <b>{get_message_bot}</b>\n' \
-                      f'Время проверки - <b>{datetime.now()}</b>\n' \
+                      f'Время запуска проверки - <b>{datetime.now()}</b>\n' \
+                      f'Статистика за - <b>{date} - {time}</b>\n' \
                       f'Население страны - {location[0]["country_population"]:,} *\n' \
                       f'Потверждены всего - {location[0]["latest"]["confirmed"]:,} *\n' \
                       f'Погибли - {location[0]["latest"]["deaths"]:,} *'
 
         print(f'Name: {message.from_user.first_name}, Date: {datetime.now()}')
-        log.info('Called bot..')
+        log.info(f'Called bot.. name: {message.from_user.first_name}')
 
 
     bot.send_message(message.chat.id, out_message, parse_mode='html')
