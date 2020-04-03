@@ -8,7 +8,7 @@ from datetime import datetime
 
 log = logging.getLogger('telebot')
 log.setLevel(logging.INFO)
-fh = logging.FileHandler("/var/log/tg_telebot.log", 'w', 'utf-8')
+fh = logging.FileHandler("/var/log/tg_telebot.log", 'a', 'utf-8')
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 fh.setFormatter(formatter)
 log.addHandler(fh)
