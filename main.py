@@ -82,7 +82,7 @@ def mess(message):
         percentage_patients_country = (int(people_confirmed) * 100) / int(country_population)
         out_message = f'Страна - <b>{get_message_bot}</b>\n' \
                       f'Время запуска проверки - <b>{datetime.now()}</b>\n' \
-                      f'Статистика на - <b>{date[0]} - {time[0]}</b>(Фактически за прошлый день!)\n' \
+                      f'Статистика, обновлено (вчера)* в <b>{time[0]}</b> UTC -5\n' \
                       f'Население страны - {location[0]["country_population"]:,}\n' \
                       f'Потверждены всего - {location[0]["latest"]["confirmed"]} *\n' \
                       f'Погибли - {location[0]["latest"]["deaths"]} *\n' \
