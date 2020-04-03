@@ -33,6 +33,13 @@ def start(message):
     bot.send_message(message.chat.id, send_text, parse_mode='html')
 
 
+@bot.message_handler(commands=['map'])
+def start(message):
+    send_text = f'<b>Карта статистики COVID-19 в мире. Будь начеку, {message.from_user.first_name} - мой руки, сиди дома!</b>\nВремя проверки - <b>{datetime.now()}</b>\n' \
+                f'<a target="_blank" href="https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6"></a>'
+    bot.send_message(message.chat.id, send_text, parse_mode='html')
+
+
 @bot.message_handler(content_types=['text'])
 def mess(message):
     out_message = ''
@@ -74,7 +81,7 @@ def mess(message):
         percentage_patients_country = (int(people_confirmed) * 100) / int(country_population)
         out_message = f'Страна - <b>{get_message_bot}</b>\n' \
                       f'Время запуска проверки - <b>{datetime.now()}</b>\n' \
-                      f'Статистика за - <b>{date[0]} - {time[0]}</b>\n' \
+                      f'Статистика на - <b>{date[0]} - {time[0]}</b>(Фактически за прошлый день!)\n' \
                       f'Население страны - {location[0]["country_population"]:,}\n' \
                       f'Потверждены всего - {location[0]["latest"]["confirmed"]} *\n' \
                       f'Погибли - {location[0]["latest"]["deaths"]} *\n' \
