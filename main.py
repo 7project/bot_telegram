@@ -57,6 +57,9 @@ def mess(message):
         location = covid_19.getLocationByCountryCode('ES')
     elif get_message_bot == 'китай':
         location = covid_19.getLocationByCountryCode('CN')
+        out_message = f'<u>Данные не корректны!</u>\n<b> Заболевших на 03.04.2020: 82 502</b>' \
+        bot.send_message(message.chat.id, out_message, parse_mode='html')
+        out_message = ''
     elif get_message_bot == 'германия':
         location = covid_19.getLocationByCountryCode('DE')
     elif get_message_bot == 'франция':
