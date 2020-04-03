@@ -49,7 +49,7 @@ def mess(message):
     if out_message == '':
         date = location[0]['last_updated'].split('T')
         time = date[1].split('.')
-        out_message = f'Страна - <b>{message.from_user.first_name}</b>\n' \
+        out_message = f'Страна - <b>{get_message_bot}</b>\n' \
                       f'Время проверки - <b>{datetime.now()}</b>\n' \
                       f'Население страны - {location[0]["country_population"]:,} *\n' \
                       f'Потверждены всего - {location[0]["latest"]["confirmed"]:,} *\n' \
