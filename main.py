@@ -24,8 +24,6 @@ covid_19 = COVID19Py.COVID19()
 
 bot = telebot.TeleBot(TOKEN)
 
-bot.polling(none_stop=True)
-
 
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -115,6 +113,9 @@ def mess(message):
 
     bot.send_message(message.chat.id, out_message, parse_mode='html')
     # bot.send_message('@covid19word', out_message, parse_mode='html')
+
+
+bot.polling(none_stop=True)
 
 
 # счетчик
