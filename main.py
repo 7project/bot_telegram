@@ -24,6 +24,8 @@ covid_19 = COVID19Py.COVID19()
 
 bot = telebot.TeleBot(TOKEN)
 
+bot.polling(none_stop=True)
+
 
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -105,7 +107,7 @@ def mess(message):
                       f'<b>Население страны - {location[0]["country_population"]:,}</b>\n' \
                       f'<b>Потверждены всего - {location[0]["latest"]["confirmed"]} *</b>\n' \
                       f'<b>Погибли - {location[0]["latest"]["deaths"]} * </b>\n\n' \
-                      f'<b>Процент заболевших в стране - {percentage_patients_country:.7f} % *<b>'
+                      f'<b>Процент заболевших в стране - {percentage_patients_country:.7f} % *</b>'
 
         print(f'Name: {message.from_user.first_name}, Date: {datetime.now()}')
         log.info(f'Called bot.. name: {message.from_user.first_name}, command: {get_message_bot}')
@@ -113,9 +115,6 @@ def mess(message):
 
     bot.send_message(message.chat.id, out_message, parse_mode='html')
     # bot.send_message('@covid19word', out_message, parse_mode='html')
-
-
-bot.polling(none_stop=True)
 
 
 # счетчик
