@@ -17,13 +17,14 @@ log.addHandler(fh)
 covid_19 = COVID19Py.COVID19()
 
 # PROXY = '154.16.202.22:8080'
-
 # apihelper.proxy = {
 #     'http': 'http://' + PROXY,
 #     'https': 'https://' + PROXY,
 # }
 
 bot = telebot.TeleBot(TOKEN)
+
+bot.polling(none_stop=True)
 
 
 @bot.message_handler(commands=['start'])
@@ -100,12 +101,12 @@ def mess(message):
         country_population = location[0]["country_population"]
         people_confirmed = location[0]["latest"]["confirmed"]
         percentage_patients_country = (int(people_confirmed) * 100) / int(country_population)
-        out_message = f'<b>Страна - {get_message_bot}</b>\n' \
+        out_message = f'<b>Страна - {get_message_bot}</b>\n\n' \
                       f'<b>Время запуска проверки - {datetime.now()}</b>\n' \
-                      f'<b>Статистика, обновлено (вчера)* в {time[0]} UTC -5</b><br>\n' \
+                      f'<b>Статистика, обновлено (вчера)* в {time[0]} UTC -5</b>\n\n' \
                       f'<b>Население страны - {location[0]["country_population"]:,}</b>\n' \
                       f'<b>Потверждены всего - {location[0]["latest"]["confirmed"]} *</b>\n' \
-                      f'<b>Погибли - {location[0]["latest"]["deaths"]} * </b><br>\n' \
+                      f'<b>Погибли - {location[0]["latest"]["deaths"]} * </b>\n\n' \
                       f'<b>Процент заболевших в стране - {percentage_patients_country:.7f} % *<b>'
 
         print(f'Name: {message.from_user.first_name}, Date: {datetime.now()}')
@@ -115,26 +116,15 @@ def mess(message):
     bot.send_message(message.chat.id, out_message, parse_mode='html')
     # bot.send_message('@covid19word', out_message, parse_mode='html')
 
+
 # счетчик
 # count_exp = 0
-
-bot.polling(none_stop=True)
-
 # while True:
 #     try:
 #         count_exp = 0
-#         bot.polling(none_stop=True)
+#         bot.polling()
 #     except Exception as exp:
 #         count_exp += 1
 #         print(exp)
 #         if count_exp == 3:
 #             break
-
-# latest = covid_19.getLatest()
-# location = covid_19.getLocationByCountryCode('RU')
-
-
-# print(latest)
-# print()
-# print(location)
-
