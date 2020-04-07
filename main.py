@@ -63,7 +63,8 @@ def mess(message):
         location = covid_19.getLocationByCountryCode('ES')
     elif get_message_bot == 'китай':
         location = covid_19.getLocationByCountryCode('CN')
-        out_message = f'<u>Данные не корректны!</u>\n<b> Заболевших на 03.04.2020 в Китае: 82 574</b>'
+        out_message = f'<u>Данные не корректны!</u>\n<b> Заболевших на 03.04.2020 в Китае: 82 574</b>\n' \
+                      f'<u>Данные не корректны!</u>\n<b> Заболевших на 07.04.2020 в Китае: 82 718</b>'
         bot.send_message(message.chat.id, out_message, parse_mode='html')
         # bot.send_message('@covid19word', out_message, parse_mode='html')
         out_message = ''
@@ -71,7 +72,8 @@ def mess(message):
         location = covid_19.getLocationByCountryCode('DE')
     elif get_message_bot == 'франция':
         location = covid_19.getLocationByCountryCode('FR')
-        out_message = f'<u>Данные не корректны!</u>\n<b> Заболевших на 03.04.2020 в Франции: 90 848</b>'
+        out_message = f'<u>Данные не корректны!</u>\n<b> Заболевших на 03.04.2020 в Франции: 90 848</b>\n' \
+                      f'<u>Данные не корректны!</u>\n<b> Заболевших на 07.04.2020 в Франции: 98 984</b>'
         bot.send_message(message.chat.id, out_message, parse_mode='html')
         # bot.send_message('@covid19word', out_message, parse_mode='html')
         out_message = ''
@@ -81,7 +83,8 @@ def mess(message):
         location = covid_19.getLocationByCountryCode('JP')
     elif get_message_bot == 'англия':
         location = covid_19.getLocationByCountryCode('GB')
-        out_message = f'<u>Данные не корректны!</u>\n<b> Заболевших на 03.04.2020 в Англии: 42 479</b>'
+        out_message = f'<u>Данные не корректны!</u>\n<b> Заболевших на 03.04.2020 в Англии: 42 479</b>\n' \
+                      f'<u>Данные не корректны!</u>\n<b> Заболевших на 07.04.2020 в Англии: 52 301</b>'
         bot.send_message(message.chat.id, out_message, parse_mode='html')
         # bot.send_message('@covid19word', out_message, parse_mode='html')
         out_message = ''
@@ -103,7 +106,7 @@ def mess(message):
                       f'<b>Время запуска проверки - {datetime.now()}</b>\n' \
                       f'<b>Статистика, обновлено (вчера)* в {time[0]} UTC -5</b>\n\n' \
                       f'<b>Население страны - {location[0]["country_population"]:,}</b>\n' \
-                      f'<b>Потверждены всего - {location[0]["latest"]["confirmed"]} *</b>\n' \
+                      f'<b>Подтверждены всего - {location[0]["latest"]["confirmed"]} *</b>\n' \
                       f'<b>Погибли - {location[0]["latest"]["deaths"]} * </b>\n\n' \
                       f'<b>Процент заболевших в стране - {percentage_patients_country:.7f} % *</b>'
 
