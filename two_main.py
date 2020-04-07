@@ -7,7 +7,6 @@ from covid.api import CovId19Data
 
 api = CovId19Data(force=True)
 
-
 log = logging.getLogger('telebot')
 log.setLevel(logging.INFO)
 fh = logging.FileHandler("/var/log/tg_telebot.log", 'a', 'utf-8')
@@ -15,14 +14,12 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 fh.setFormatter(formatter)
 log.addHandler(fh)
 
-
 bot = telebot.TeleBot(TOKEN)
-
 
 @bot.message_handler(commands=['test'])
 def start(message):
     res = api.get_stats()
-    send_text = f'<b>{res}</b>\nВремя проверки - <b>{datetime.now()}</b>\n' \
+    send_text = f'<b>{res}</b>\nВремя проверки - <b>{datetime.now()}</b>\n'
     bot.send_message(message.chat.id, send_text, parse_mode='html')
 
     # bot.send_message('@covid19word', send_chanel, parse_mode='html')
@@ -68,4 +65,3 @@ while True:
         break
     except Exception as e:
         log.exception(f'Exception bot.. message: {e}.')
-
