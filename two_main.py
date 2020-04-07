@@ -20,8 +20,9 @@ bot = telebot.TeleBot(TOKEN)
 def start(message):
     res = api.get_stats()
     send_text = f'<b>Время запуска скрипта - {datetime.now()}</b>\n' \
-                f'<b>Статистика обнавлена - {res["last_updated"]}</b>\n\n' \
+                f'<b>Статистика обновлена - {res["last_updated"]}</b>\n\n' \
                 f'<b>В мире подтверждено - {res["confirmed"]}</b>\n' \
+                f'<b>В мире выздоровило - {res["recovered"]}</b>\n' \
                 f'<b>В мире погибло - {res["deaths"]}</b>'
 
     bot.send_message(message.chat.id, send_text, parse_mode='html')
