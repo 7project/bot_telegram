@@ -5,7 +5,7 @@ from telebot import apihelper
 from datetime import datetime
 from covid.api import CovId19Data
 
-api = CovId19Data(force=True)
+api = CovId19Data(force=False)
 
 log = logging.getLogger('telebot')
 log.setLevel(logging.INFO)
