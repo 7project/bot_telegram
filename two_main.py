@@ -30,13 +30,13 @@ def mess(message):
     out_message = ''
     get_message_bot = message.text.strip().lower()
     if get_message_bot == 'россия':
+        location = ''
         # location = covid_19.getLocationByCountryCode('RU')
-
     else:
+        location = ''
         # location = covid_19.getLatest()
         out_message = f'<u>Данные по всему миру:</u>\n<b> Заболевшие: </b>{location["confirmed"]}'
         log.info(f'Called bot.. name: {message.from_user.first_name}, not_command(message):{get_message_bot}')
-
 
     if out_message == '':
         date = location[0]['last_updated'].split('T')
