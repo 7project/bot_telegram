@@ -1,4 +1,4 @@
-certifi==2019.11.28
+certifi==2022.12.7
 chardet==3.0.4
 covid-data-api==1.5
 COVID19Py==0.3.0
